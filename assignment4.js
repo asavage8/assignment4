@@ -13,5 +13,21 @@
 
 (function() {
   // Magic!
-  console.log('Keepin\'n it clean with an external script!');
+  $.ajax({
+		url: 'http://www.mattbowytz.com/simple_api.json',
+		type: 'GET',
+		dataType: 'json',
+    data: { data: 'all'},
+		success: function(data) {
+      $search = $.merge(data.data.interests, data.data.programming);
+      $search.sort();
+       console.log($search);
+       console.log(data);
+    }
+  });
+  $('.flexsearch-input').on('keyup', function(e){
+    var input= $(this).val();
+    console.log(input);
+  })
+
 })();
